@@ -1,0 +1,43 @@
+Reputasjon fra workshop 17.okt.2022. Loop
+
+Samle pdf i GCS -> til slutt lager i PC disk.
+
+# Downloading many jsons: Iteration solution with "for" loop.
+#First create vector with all the filenames, as described above. Then run 
+#the loop to download each .json file:
+for(file in myjap1pdfs){
+  gcs_get_object(file, saveToDisk = basename(file), overwrite = TRUE)
+}
+
+
+#Samle alle nedlastede .json-filer fra forrige loop i C)n vektor:
+
+myjap1_jsons <- list.files(pattern = "*0.json")
+myjap1_jsons
+
+# først lager vi en tom tekstvektor
+
+full_text <- character()
+
+# Nå looper vi over vektoren med json-filene
+
+for (json in myjap1_jsons){
+  txt <- text_from_dai_file(json)
+  full_text <- paste(full_text, "\n", txt)
+}
+
+
+# her fyller vi pC% den tomme tekstvektoren med tekst fra json-filene.
+
+# Lagre R-objektet som fil i Windows:
+
+Sys.setlocale("LC_CTYPE", "Japanese")
+write(full_text, "fullpdfs.txt")
+Sys.setlocale("LC_CTYPE", "Japanese")
+
+#This produces a file that Word can read, but not Atom or Notepad. Why?
+# The text writes fine when opened as an object inside RStudio. 
+#Something must be wrong with the Sys.setlocale script.
+
+cat(full_text)
+        
