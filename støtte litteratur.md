@@ -10,4 +10,5 @@ https://data.library.virginia.edu/a-beginners-guide-to-text-analysis-with-quante
 https://quanteda.io/articles/quickstart.html
 
 [A Beginner's guide to text analysis with quanteda](https://data.library.virginia.edu/a-beginners-guide-to-text-analysis-with-quanteda/)
+
 [Quanteda: Quick start guide](https://quanteda.io/articles/quickstart.html)
